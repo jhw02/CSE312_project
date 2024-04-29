@@ -22,7 +22,7 @@ csp = {
 }
 
 
-mongo_client=pymongo.MongoClient("mongodb://mongo:27017/postDB")
+mongo_client=pymongo.MongoClient("mongodb+srv://jhw02:1bzj2hbs3xey.@ikuncse312.6cqwvfi.mongodb.net/postDB")
 db=mongo_client['postDB']
 post_collection=db['posts']
 user_collection=db['users']
