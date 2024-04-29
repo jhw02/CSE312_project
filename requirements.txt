@@ -1,0 +1,5 @@
+pymongo
+bcrypt
+flask
+flask_talisman
+flask_socketio

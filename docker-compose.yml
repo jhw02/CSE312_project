@@ -1,0 +1,18 @@
+version: '3'
+services:
+  app:
+    build: .
+    ports:
+      - '8080:8080'
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/postDB
+  mongo:
+    image: mongo:latest  
+    ports:
+      - '27017:27017'
+    volumes:
+      - postDB:/data/db
+
+volumes:
+  postDB:
+    driver: local

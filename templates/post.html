@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/static/style.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="/static/ikun.ico">
+    
+    <title>{{ post.title }}</title>
+</head>
+<body>
+    <h1>{{ post.title }}</h1>
+    <div class="post_body">{{ post.content | safe }}</div>
+    <p>Posted by {{ post.user }}</p>
+    <a href="/">Back to Home</a>
+    <hr>
+    <h2>Comments</h2>
+    <ul>
+        {% for comment in post.comments %}
+            <li>{{comment.user}}: {{comment.content}} </li>
+        {% endfor %}
+    </ul>
+    <hr>
+    <h2>Add Comment</h2>
+    <form action="/comment/{{ post._id }}" method="post">
+        <label>Comment:
+            <textarea name="content" rows="4" cols="50"></textarea>
+        </label>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<head>
+    <meta charset="UTF-8">
+    <title>ikun discussion</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/static/ikun.ico">
+</head>
+<body>
+
+<div class="title">
+    <h1>IKUN discussion</h1>
+    <p id="paragraph"></p>
+    <div class="welcome-message">
+        <p>Welcome, {{current_user}}</p>
+    </div>
+</div>
+
+<div class="images_and_auth">
+    <div class="image_div">
+        <img src="/static/image/basketball.jpg" alt="It's an ikun" class="my_image"/>
+    </div>
+
+    <div class="auth-forms">
+        <div id="login-form">
+            <h2>Login</h2>
+            <form action="/login" method="POST" enctype="application/x-www-form-urlencoded">
+                <label>Username:
+                    <input id="login-form-username" type="text" name="username_login"/>
+                </label>
+                <br/>
+                <label>Password:&nbsp;
+                    <input id="login-form-pass" type="password" name="password_login">
+                </label>
+                <input type="submit" value="Login">
+            </form>
+        </div>
+
+        <div id="register-form">
+            <h2>Register</h2>
+            <form action="/register" method="POST" enctype="application/x-www-form-urlencoded">
+                <label>Username:
+                    <input id="reg-form-username" type="text" name="username_reg"/>
+                </label>
+                <br/>
+                <label>Password:&nbsp;
+                    <input id="reg-form-pass" type="password" name="password_reg">
+                </label>
+                <br/>
+                <label>Confirm Password:&nbsp;
+                    <input id="reg-form-confirm-pass" type="password" name="confirm_password_reg">
+                </label>
+                <input type="submit" value="Register">
+            </form>
+        </div>
+        <div class="logout">
+            <form action="/logout" method="POST" enctype="application/x-www-form-urlencoded">
+                <input type="submit" value="Logout">
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="function">
+    <button id="post-button">Make Post</button>
+    <a href="/chatroom"><button id="chatroom-button">Enter Chatroom</button></a>
+</div>
+
+<div class="views">
+    <h1>All Posts</h1>
+    <ul>
+        {% for post in posts %}
+            <li><a href="/post/{{ post._id }}">{{ post.title }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+
+
+
+<script src="/static/functions.js"></script>
+</body>
+</html>
